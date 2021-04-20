@@ -1,5 +1,6 @@
 -i https://pypi.org/simple
 asgiref==3.3.4; python_version >= '3.6'
+django-ipware==3.0.2
 django==3.2
 djangorestframework-simplejwt==4.6.0
 djangorestframework==3.12.4
