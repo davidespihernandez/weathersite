@@ -196,3 +196,5 @@ if len(sys.argv) > 1 and sys.argv[1] == "test":
     logging.disable(logging.CRITICAL)
 
 DEFAULT_RATE_LIMIT_PER_MINUTE = 60
+
+ALLOWED_HOSTS = ["*"]
