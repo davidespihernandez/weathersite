@@ -12,7 +12,6 @@ from rest_framework.exceptions import APIException, NotAuthenticated
 from rest_framework.response import Response
 
 DEFAULT_DURATION = 60  # default is requests per minute
-NUMBER_OF_REQUESTS = getattr(settings, "DEFAULT_RATE_LIMIT_PER_MINUTE", 60)
 
 
 class RateExceeded(APIException):
@@ -53,7 +52,7 @@ def check_rate_limit(request, number_of_requests=None):
         raise NotAuthenticated()
 
     duration = DEFAULT_DURATION
-    number_of_requests = number_of_requests or NUMBER_OF_REQUESTS
+    number_of_requests = number_of_requests or getattr(settings, "DEFAULT_RATE_LIMIT_PER_MINUTE", 60)
     history = default_cache.get(cache_key, [])
     now = time.time()
 
@@ -72,7 +71,7 @@ def check_rate_limit(request, number_of_requests=None):
 
 # decorator for views
 
-def with_rate_limit(number_of_requests: int = NUMBER_OF_REQUESTS):
+def with_rate_limit(number_of_requests: int = None):
     def decorator(function):
         @functools.wraps(function)
         def wrapper(request, *args, **kwargs):

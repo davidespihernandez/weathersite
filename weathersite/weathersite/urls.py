@@ -9,6 +9,6 @@ urlpatterns = [
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
-    path("weather/limited", limited),
-    path("weather/unlimited", unlimited),
+    path("weather/limited", limited, name="limited"),
+    path("weather/unlimited", unlimited, name="unlimited"),
 ]
