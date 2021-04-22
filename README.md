@@ -162,14 +162,14 @@ Ran 2 tests in 0.219s
 OK
 ```
 
-### Postman collection
+### 4.2 Postman collection
 There's a postman collection called `Weather-rate limit.postman_collection.json` in the root folder that contains requests for limited (authenticated and anonymous) and unlimited endpoints.
 
 If you select the anonymous limited request and click on "Send", you'll see the response headers contain the new headers.
 
 ![Test result](Postman_test.png "Test result")
 
-#### Authenticated requests
+#### 4.2.1 Authenticated requests
 The authentication system I use is JWT tokens, so you'll have first to retrieve a valid token using the authentication endpoint. 
 There's a request called "JWT get token" (`POST /api/token/`) in the postman collection for that purpose.
 
@@ -184,7 +184,7 @@ The result of the auth request (POST) is something like:
 
 You have to copy the `access` token and paste it in the `Authentication` header in the authenticated request, with the prefix `Bearer `.
 
-#### Run requests several times
+#### 4.2.2 Run requests several times
 Postman allows you to run a request several times, so you can test the rate limitation actually works. 
 In order to do that:
 
